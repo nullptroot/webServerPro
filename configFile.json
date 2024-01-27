@@ -1,0 +1,15 @@
+{
+   "CONNTrigmode" : 0,
+   "LISTENTrigmode" : 0,
+   "LOGWrite" : 0,
+   "OPT_LINGER" : 0,
+   "PORT" : 9006,
+   "TRIGMode" : 0,
+   "actor_model" : 0,
+   "close_log" : 0,
+   "databasename" : "webServer",
+   "passwd" : "*********",
+   "sql_num" : 8,
+   "thread_num" : 8,
+   "user" : "root"
+}
