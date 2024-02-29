@@ -1,5 +1,60 @@
 ### 魔改版webServer
 
+#### 环境和参数配置
+
+```sql
+// 建立webServer库
+create database webServer;
+
+// 创建user表
+USE yourdb;
+CREATE TABLE user(
+    username char(50) NULL,
+    passwd char(50) NULL
+)ENGINE=InnoDB;
+
+// 添加数据
+INSERT INTO user(username, passwd) VALUES('name', 'passwd');
+```
+
+配置json环境
+```shell
+git clone git@github.com:open-source-parsers/jsoncpp.git
+cd jsoncpp
+python amalgamate.py
+cp dist/ webServerPro/ -r
+```
+
+修改configFile.json中的配置参数
+```json
+{
+   "CONNTrigmode" : 0,          //连接套接字的触发模式
+   "LISTENTrigmode" : 0,        //监听套接字的触发模式
+   "LOGWrite" : 0,              //日志同/异步
+   "OPT_LINGER" : 0,            //优雅关闭
+   "PORT" : 9006,               //监听端口
+   "TRIGMode" : 0,              /*listenfd和connfd的模式组合，默认使用LT + LT
+                                    0，表示使用LT + LT
+                                    1，表示使用LT + ET
+                                    2，表示使用ET + LT
+                                    3，表示使用ET + ET*/
+   "actor_model" : 0,           //事件处理模式
+   "close_log" : 0,             //是否关闭日志
+   "databasename" : "webServer",//数据库名字
+   "passwd" : "**",             //密码
+   "sql_num" : 8,               //sql连接池的连接数
+   "thread_num" : 8,            //线程池的线程数
+   "user" : "root"              //数据库登录的密码
+}
+```
+
+启动项目
+```shell
+make -j8
+./server configFile.json
+```
+
+
 #### 根据大神的TinyWebServer进行改进的版本
 
 改进内容主要如下
